@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     class: 'w-1/4 border-r border-b border-indigo-400',
   }
 })
-export class CalculatorButton {
-
+export class CalculatorButton{
+  public isCommand = input(false);
 }
