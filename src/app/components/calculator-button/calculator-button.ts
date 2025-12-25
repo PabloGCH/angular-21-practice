@@ -1,4 +1,4 @@
-import { Component, HostBinding, input, output } from '@angular/core';
+import { Component, HostBinding, input, output, signal } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -14,6 +14,7 @@ export class CalculatorButton{
   public isCommand = input(false);
   public isDoubleSize = input(false);
   public value = input("");
+  public isPressed = signal(false);
 
   @HostBinding('class.w-2/4') get doubleSizeClass() {
     return this.isDoubleSize();
@@ -21,5 +22,15 @@ export class CalculatorButton{
 
   handleClick() {
     this.onClick.emit(this.value());
+  }
+
+  public keyboardPressedStyle(key :string) {
+    if(!this.value()) return;
+    const value = this.value();
+    if(value != key) { return }
+    this.isPressed.set(true);
+    setTimeout(() => {
+      this.isPressed.set(false);
+    }, 100);
   }
 }
