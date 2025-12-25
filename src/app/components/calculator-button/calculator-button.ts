@@ -20,6 +20,6 @@ export class CalculatorButton{
   };
 
   handleClick() {
-    this.onClick.emit("Hola mundo");
+    this.onClick.emit(this.value());
   }
 }
