@@ -7,6 +7,7 @@ import { Component, HostBinding, input, output, signal } from '@angular/core';
   styleUrl: './calculator-button.css',
   host: {
     class: 'w-1/4 border-r border-b border-indigo-400',
+    '[class.w-2/4]': 'isDoubleSize()' 
   }
 })
 export class CalculatorButton{
@@ -15,10 +16,6 @@ export class CalculatorButton{
   public isDoubleSize = input(false);
   public value = input("");
   public isPressed = signal(false);
-
-  @HostBinding('class.w-2/4') get doubleSizeClass() {
-    return this.isDoubleSize();
-  };
 
   handleClick() {
     this.onClick.emit(this.value());
