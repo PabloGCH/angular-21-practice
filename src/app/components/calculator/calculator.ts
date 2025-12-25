@@ -8,5 +8,7 @@ import { CalculatorButton } from '../calculator-button/calculator-button';
   styleUrl: './calculator.css',
 })
 export class Calculator {
-
+  handleClick(key :string) {
+    console.log(key);
+  }
 }

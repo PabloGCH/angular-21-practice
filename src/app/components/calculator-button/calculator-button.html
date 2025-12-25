@@ -1,5 +1,8 @@
 <button
-    [class.is-command]="isCommand()" [class.is-double-size]="isDoubleSize()"
+    (click)="handleClick()"
+    class="cursor-pointer"
+    [class.is-command]="isCommand()"
+    [class.is-double-size]="isDoubleSize()"
 >
-    <ng-content/>
+    {{ value() }}
 </button>

@@ -1,4 +1,4 @@
-import { Component, HostBinding, input } from '@angular/core';
+import { Component, HostBinding, input, output } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -10,10 +10,16 @@ import { Component, HostBinding, input } from '@angular/core';
   }
 })
 export class CalculatorButton{
+  public onClick = output<string>();
   public isCommand = input(false);
   public isDoubleSize = input(false);
+  public value = input("");
 
   @HostBinding('class.w-2/4') get doubleSizeClass() {
     return this.isDoubleSize();
   };
+
+  handleClick() {
+    this.onClick.emit("Hola mundo");
+  }
 }
