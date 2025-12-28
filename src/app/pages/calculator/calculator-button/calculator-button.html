@@ -1,9 +1,10 @@
 <button
-    (click)="handleClick()"
+    (click)="handleClick($event)"
     class="cursor-pointer"
     [class.is-command]="isCommand()"
     [class.is-double-size]="isDoubleSize()"
     [class.is-pressed]="isPressed()"
+    tabindex="-1"
 >
     {{ value() }}
 </button>

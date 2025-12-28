@@ -17,7 +17,9 @@ export class CalculatorButton{
   public readonly value = input("");
   public readonly isPressed = signal(false);
 
-  protected handleClick() {
+  protected handleClick(event :MouseEvent) {
+    event.stopPropagation();
+    (event.target as HTMLElement).blur();
     this.onClick.emit(this.value());
   }
 
