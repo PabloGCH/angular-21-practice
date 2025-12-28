@@ -46,17 +46,57 @@ export class CalculatorProcessor {
     }
     // Aplicar operador
     if(operators.includes(value)) {
+      if(this.resultText() === '0' && value === '-') {
+        this.resultText.set('-');
+        this.lastOperator.set(value);
+        return;
+      }
       this.lastOperator.set(value);
       this.subResultText.set(this.resultText())
       this.resultText.set('0');
       return;
     }
-    // Validar punto decimal
-    if( value === '.' && !this.resultText().includes('.')) {
-      if(this.resultText() === '0')
-        this.resultText.update(text => text + '.');
+
+    // Limitar numero de caracteres
+    if( this.resultText().length >= 10) {
+      console.log('Max length reached');
       return;
     }
-    this.resultText.update(text => text + '.');
+
+    // Validar punto decimal
+    if( value === '.' && !this.resultText().includes('.')) {
+      if(this.resultText() === '0') {
+        this.resultText.set('0.');
+        return;
+      }
+      this.resultText.update(text => text + '.');
+      return;
+    }
+    // Manejo de 0 inicial
+    if(this.resultText() === '0' && value === '0' || this.resultText() === '-0') {
+      return;
+    }
+    // Cambiar signo
+    if(value === '+/-') {
+      if(this.resultText().includes('-'))
+        this.resultText.update(text => text.slice(1));
+      else if(this.resultText() !== '0')
+        this.resultText.update(text => '-' + text);
+      return;
+    }
+
+    // Números
+    if(numbers.includes(value)) {
+      if(this.resultText() === '0') {
+        this.resultText.set(value);
+        return;
+      }
+      if(this.resultText() === '-') {
+        this.resultText.set('-' + value);
+        return;
+      }
+      this.resultText.update(text => text + value);
+      return;
+    }
   }
 }

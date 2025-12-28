@@ -20,6 +20,7 @@ export class CalculatorUi {
 
   protected handleClick(key :string) {
     console.log(key);
+    this.calculatorProcessor.constructNumber(key);
   }
 
   protected handleKeyboardEvent(event :KeyboardEvent) {
