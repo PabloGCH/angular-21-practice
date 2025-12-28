@@ -19,7 +19,6 @@ export class CalculatorUi {
   protected lastOperator = computed(() => this.calculatorProcessor.lastOperator());
 
   protected handleClick(key :string) {
-    console.log(key);
     this.calculatorProcessor.constructNumber(key);
   }
 

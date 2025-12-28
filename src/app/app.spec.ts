@@ -17,7 +17,6 @@ describe('App', () => {
   it('should render router-outlet', () => {
     const fixture = TestBed.createComponent(App);
     const compiled = fixture.nativeElement as HTMLElement;
-    console.log(compiled.innerHTML);
     const routerOutlet = compiled.querySelector('router-outlet');
     expect(routerOutlet).toBeTruthy();
   });
