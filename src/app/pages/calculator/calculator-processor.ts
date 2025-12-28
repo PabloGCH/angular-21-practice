@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 
 const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-const operators = ['+', '-', 'x', '÷'];
+const operators = ['+', '-', '*', '÷'];
 const specialOperators = ['+/-', 'C', '%', '=', 'Backspace', '.'];
 
 
@@ -112,7 +112,7 @@ export class CalculatorProcessor {
       case '-':
         result = number1 - number2;
         break;
-      case 'x':
+      case '*':
         result = number1 * number2;
         break;
       case '÷':

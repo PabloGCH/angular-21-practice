@@ -30,7 +30,7 @@ export class CalculatorUi {
     const keyEquivalents :Record<string,string> = {
       Escape: 'C',
       Clear: 'C',
-      '*': 'x',
+      'x': '*',
       Enter: '=',
       '/': '÷'
     }
