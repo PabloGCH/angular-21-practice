@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalculatorUi } from './calculator-ui';
 
-describe('Calculator', () => {
+describe('CalculatorUi', () => {
   let component: CalculatorUi;
   let fixture: ComponentFixture<CalculatorUi>;
 
