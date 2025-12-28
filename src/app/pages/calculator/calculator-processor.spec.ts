@@ -53,7 +53,7 @@ describe('CalculatorProcessor', () => {
     service.constructNumber('2');
     service.constructNumber('+');
     service.constructNumber('1');
-    service.calculateResult();
+    service.constructNumber('=');
     
     expect(service.resultText()).toEqual('3');
     expect(service.subResultText()).toEqual('0');
@@ -63,7 +63,7 @@ describe('CalculatorProcessor', () => {
     service.constructNumber('2');
     service.constructNumber('-');
     service.constructNumber('1');
-    service.calculateResult();
+    service.constructNumber('=');
     
     expect(service.resultText()).toEqual('1');
     expect(service.subResultText()).toEqual('0');
@@ -74,7 +74,7 @@ describe('CalculatorProcessor', () => {
     service.constructNumber('*');
     service.constructNumber('2');
 
-    service.calculateResult();
+    service.constructNumber('=');
     
     expect(service.resultText()).toEqual('6');
     expect(service.subResultText()).toEqual('0');
@@ -86,7 +86,7 @@ describe('CalculatorProcessor', () => {
     service.constructNumber('÷');
     service.constructNumber('2');
 
-    service.calculateResult();
+    service.constructNumber('=');
     
     expect(service.resultText()).toEqual('5');
     expect(service.subResultText()).toEqual('0');
@@ -97,7 +97,7 @@ describe('CalculatorProcessor', () => {
     service.constructNumber('.');
     service.constructNumber('2');
 
-    service.calculateResult();
+    service.constructNumber('=');
     
     expect(service.resultText()).toEqual('3.2');
   });
@@ -107,7 +107,7 @@ describe('CalculatorProcessor', () => {
     service.constructNumber('.');
     service.constructNumber('2');
 
-    service.calculateResult();
+    service.constructNumber('=');
     
     expect(service.resultText()).toEqual('0.2');
   });
