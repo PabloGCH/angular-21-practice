@@ -7,7 +7,7 @@ import { CalculatorProcessor } from '../calculator-processor';
   imports: [ CalculatorButton ],
   templateUrl: './calculator-ui.html',
   host: {
-    '(document:keyup)': 'handleKeyboardEvent($event)'
+    '(document:keydown)': 'handleKeyboardEvent($event)'
   }
 })
 export class CalculatorUi {
@@ -24,6 +24,8 @@ export class CalculatorUi {
   }
 
   protected handleKeyboardEvent(event :KeyboardEvent) {
+    event.preventDefault();
+    event.stopPropagation();
     const key = event.key;
     const keyEquivalents :Record<string,string> = {
       Escape: 'C',
