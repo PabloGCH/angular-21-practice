@@ -8,6 +8,8 @@ describe('CalculatorProcessor', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CalculatorProcessor);
+
+    vi.resetAllMocks();
   });
 
   it('should be created', () => {
@@ -141,13 +143,19 @@ describe('CalculatorProcessor', () => {
   });
 
   it('should handle max length', () => {
+    const consoleSpy = vi.spyOn( console, 'log');
+
     for(let i = 0; i < 15; i++)
       service.constructNumber('1');
 
     expect(service.resultText().length).toEqual(10);
+    expect(consoleSpy).toHaveBeenCalledWith('Max length reached');
   });
 
   it('should handle invalid input', () => {
+    const consoleSpy = vi.spyOn( console, 'log');
+    consoleSpy.mockImplementation(() => {});
+
     service.constructNumber('a');
     service.constructNumber('b');
     service.constructNumber('c');
@@ -155,6 +163,8 @@ describe('CalculatorProcessor', () => {
     expect(service.resultText()).toEqual('0');
     expect(service.subResultText()).toEqual('0');
     expect(service.lastOperator()).toEqual('+');
+
+    expect(consoleSpy).toHaveBeenCalledWith('Invalid input');
   });
 
   it('should handle negative zero input correctly', () => {
