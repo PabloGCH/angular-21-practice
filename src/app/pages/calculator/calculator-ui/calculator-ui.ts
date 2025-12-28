@@ -2,15 +2,14 @@ import { Component, HostListener, viewChildren } from '@angular/core';
 import { CalculatorButton } from '../calculator-button/calculator-button';
 
 @Component({
-  selector: 'calculator',
+  selector: 'calculator-ui',
   imports: [ CalculatorButton ],
-  templateUrl: './calculator.html',
-  styleUrl: './calculator.css',
+  templateUrl: './calculator-ui.html',
   host: {
     '(document:keyup)': 'handleKeyboardEvent($event)'
   }
 })
-export class Calculator {
+export class CalculatorUi {
   public calculatorButtons = viewChildren(CalculatorButton);
 
   handleClick(key :string) {
