@@ -11,13 +11,13 @@ import { Component, HostBinding, input, output, signal } from '@angular/core';
   }
 })
 export class CalculatorButton{
-  public onClick = output<string>();
-  public isCommand = input(false);
-  public isDoubleSize = input(false);
-  public value = input("");
-  public isPressed = signal(false);
+  public readonly onClick = output<string>();
+  public readonly isCommand = input(false);
+  public readonly isDoubleSize = input(false);
+  public readonly value = input("");
+  public readonly isPressed = signal(false);
 
-  handleClick() {
+  protected handleClick() {
     this.onClick.emit(this.value());
   }
 
