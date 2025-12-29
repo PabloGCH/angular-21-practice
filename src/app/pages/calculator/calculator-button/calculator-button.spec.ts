@@ -7,6 +7,7 @@ describe('CalculatorButton', () => {
   let fixture: ComponentFixture<CalculatorButton>;
 
   beforeEach(async () => {
+    vi.useRealTimers();
     await TestBed.configureTestingModule({
       imports: [CalculatorButton]
     })
@@ -16,9 +17,7 @@ describe('CalculatorButton', () => {
     await fixture.whenStable();
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
-  });
+  afterEach(() => {});
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -116,6 +115,12 @@ describe('CalculatorButton', () => {
   });
 
   it('should display projected content', () => {
-    // todo:
+    fixture.componentRef.setInput('value', '2');
+    fixture.detectChanges();
+
+    const htmlElement = fixture.nativeElement as HTMLElement;
+    const buttonElement = htmlElement.querySelector('button') as HTMLElement;
+
+    expect(buttonElement.innerText).toBe('2');
   });
 });
